@@ -48,7 +48,7 @@ for round = 1:(n/chunk)
     if round == 1
         R = YTrain(e_id:n_id,:)'*YTrain(e_id:n_id,:);
         [RA,~]=mapminmax(R,0,1);
-        A(e_id:n_id,:) = (lamda*YTrain(e_id:n_id,:)+YTrain(e_id:n_id,:)*RA)/lamda;
+        A(e_id:n_id,:) = (lamda*YTrain(e_id:n_id,:)+YTrain(e_id:n_id,:)*RA)/(1+lamda);
         
         diff = A(e_id:n_id,:) - YTrain(e_id:n_id,:);
         for j = 1:nsample
@@ -102,7 +102,7 @@ for round = 1:(n/chunk)
         RR = R;
         R = RR + YTrain(e_id:n_id,:)'*YTrain(e_id:n_id,:);
         [RA,~]=mapminmax(R,0,1);
-        A(e_id:n_id,:) = (lamda*YTrain(e_id:n_id,:)+YTrain(e_id:n_id,:)*RA)/lamda;
+        A(e_id:n_id,:) = (lamda*YTrain(e_id:n_id,:)+YTrain(e_id:n_id,:)*RA)/(1+lamda);
         
         diff = A(e_id:n_id,:) - YTrain(e_id:n_id,:);
         normdiff = zeros(1,chunk);
